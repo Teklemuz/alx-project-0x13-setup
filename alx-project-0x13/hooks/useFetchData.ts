@@ -15,32 +15,34 @@ const useFetchData = <T, R>() => {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       });
 
-      if (!resp.ok)
-      {
+      if (!resp.ok) {
         throw new Error('Failed to fetch data');
       }
 
-      const result = await resp.json()
-      setResponseData(result)
-      setGeneratedImages((prev) => [...prev, { imageUrl: result?.message, prompt: body?.prompt }])
-        } catch (err) {
-      setError((err as Error).message)
+      const result = await resp.json();
+      setResponseData(result);
+      setGeneratedImages((prev) => [
+        ...prev,
+        { imageUrl: result?.message, prompt: body?.prompt },
+      ]);
+    } catch (err) {
+      setError((err as Error).message);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return {
     isLoading,
     responseData,
     error,
     fetchData,
-    generatedImages
-  }
-}
+    generatedImages,
+  };
+};
 
 export default useFetchData;
