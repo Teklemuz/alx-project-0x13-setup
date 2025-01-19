@@ -25,9 +25,9 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
         'X-RapidAPI-Host': 'chatgpt-vision1.p.rapidapi.com', 
       },
       body: JSON.stringify({
-        prompt: prompt,  // The text prompt for the image
-        width: WIDTH,    // Image width
-        height: HEIGHT,  // Image height
+        prompt: prompt,  
+        width: WIDTH,    
+        height: HEIGHT,  
       }),
     });
 
